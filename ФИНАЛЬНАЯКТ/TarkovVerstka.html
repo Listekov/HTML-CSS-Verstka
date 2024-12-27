@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape from Tarkov Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0e0e0e;
+        }
+        .menu {
+            background-color: #000000;
+            height: 114px;
+            /* padding: 15px; */
+            gap: 10px;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            position: fixed;  
+            top: 0;  
+            z-index: 100;  
+            width: 100%;
+        }
+        .logo {
+            width: 270px;
+            height: 102px;
+            display: flex;
+            justify-content:flex-start;
+        }
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            list-style-type: none;
+            width: 450px;
+            gap: 10px;
+            height: 80px;
+
+        }
+        .navigation li {
+            margin: 0 10px;
+            color: #9A8866;
+        }
+        .navigation li a {
+            color: #9A8866;
+            text-decoration: none;
+        }
+        .navigation li a.active {
+            color: #5BAFBE
+        }
+        .text1{
+            color: #9A8866;
+            text-decoration: none;
+        }
+        .text2{
+            color: #c4c4c4;
+            text-decoration: none;
+        }
+        .ds_tg_reg_log{
+            display: grid;
+            place-items: center;
+            justify-content: center;
+            align-items:center;
+        }
+        .login-reg{
+            background-image: url(Image/form_logo.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
+            height: 100%;
+            width: 100%;
+            
+        }
+        .login-reg li  {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            text-align: center;
+            list-style-type: none;
+            width: 35%;
+            height: 35%;
+        }
+        .login-reg li a {
+            margin: 0 10px;
+            color: #9A8866;
+            text-decoration: none;
+        }
+
+        .login-reg li a.register {
+            color: #FFFFFF;
+        }
+        .preobreste{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .purchase {
+            height: 25%;
+            width: 150;
+            border: 1px solid #555;
+            padding: 5px 10px;
+            text-align: center;
+            background-image: url(Image/order_btn.png);
+            background-repeat: no-repeat;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .midelmenu{
+            display: flex;
+            align-content: space-around;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0.9);
+            background-image: url(Image/desktopbanner.png);
+            background-repeat: no-repeat;
+            object-fit: cover;
+            height: 760px;
+            margin-top: 30px;
+        
+            /*padding: 20px;*/
+            
+        }
+        .lefttextbox{
+        display: flex;
+        flex-flow: column;
+        width: 343px;
+        height: 420px;
+        justify-content: flex-start;
+        text-align: left;
+        gap: 10px;
+        }
+        .righttextbox{
+        display: flex;
+        flex-flow: column;
+        width: 342px; 
+        height: 420px;
+        justify-content: flex-start;
+        text-align: right;
+        gap: 10px;
+        }
+        .centerimage{
+            display: flex;
+            align-self: flex-end;
+            align-items: center;
+            justify-content: center;
+            flex-flow: nowrap;
+            object-fit: cover;
+            width: 830px;
+            height: 270px;
+
+
+        }
+        .posettx{
+            margin-left: 20px;
+        }
+        .posettx2{
+            margin-right: 20px;
+        }
+        .beytarkov{
+            display: flex;
+            transform: scale(0.7);
+            background-image: url(Image/ru_hover.png);
+            background-repeat: no-repeat;
+            width: 510px;
+            height: 240px;
+        }
+        .beyArena{
+            display: flex;
+            background-image: url(Image/ru_hoverAren\(1\).png);
+            background-repeat:  no-repeat;
+            object-fit: cover;
+            width: 510px;
+            height: 240px;
+        }
+        .bannerblack{
+            display: flex;
+            background-color: #000000;
+            width: 100%;
+            height: 115px;
+        }
+        .packnoyt{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+            background-image: 
+            url(Image/1.png), 
+            url(Image/2.png);
+            background-repeat: no-repeat;
+            
+            height: 860px;
+        }
+        .newtryx{
+            display: flex;
+            background-image: url(Image/h2_bg.png);
+            align-items: center;
+            justify-content: center;
+            width: 350px;
+            height: 100px;
+        }
+
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            
+        }
+        .news-item {
+            display: flex;
+            justify-content: space-between;
+            background-image: url(Image/news_li_bg.png);
+            margin: 10px 0;
+            padding: 10px;
+            gap: 20px;
+            border-radius: 8px;
+            width: 70%;
+        }
+        .news-content {
+            display: flex;
+            gap: 10px;
+        }
+        .news-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            width: 600px;
+        }
+        .news-title-item {
+            font-size: 18px;
+            color: #9A8866;
+            text-decoration: none;
+        }
+        .news-desc {
+            font-size: 14px;
+            color: #AEAEB0;
+        }
+        
+        .news-button {
+            font-size: 16px;
+        }
+        .news-button {
+            display: flex;
+            align-items: flex-end;
+            background-color: #9A8866;
+            border: none;
+            color: #000000;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            height: 38px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            margin: 7px;
+        }
+        .page-number {
+            cursor: pointer;
+            color: #d4d4c4;
+        }
+        .current-page {
+            font-weight: bold;
+        }
+        .news-date{
+            display: flex;
+            color: #9A8866;
+            height: 22px;
+        }
+        .flexbutton{
+            display: flex;
+            text-align: right;
+            flex-flow: column;
+            justify-content: space-between;
+        }
+        .small-button{
+            display: flex;
+            align-items: flex-end;
+            background-color: #9A8866;
+            border: none;
+            color: #000000;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 2px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        
+        <div class="menu_logo">
+            <img src="Image/logo.png" alt="Logo" class="logo">
+        </div>
+        <div class="menu_ifo">
+        <ul class="navigation">
+            <li><a href="#">НОВОСТИ</a></li>
+            <li><a href="#">ОБ ИГРЕ</a></li>
+            <li><a href="#">РЕЙТИНГ</a></li>
+            <li><a href="#">ПОДДЕРЖКА</a></li>
+            <li><a href="#">ВИКИ</a></li>
+            <li><a href="#" class="active">EFT: ARENA</a></li>
+        </ul>
+        </div>
+        <div class="ds_tg_reg_log">
+        <ul class="login-reg">
+            <li>><a href="#" class="">ВОЙТИ</a></li>
+            <li><a href="#" class="register">РЕГИСТРАЦИЯ</a></li>
+        </ul>
+        </div>
+        <div class="preobreste">
+        <a href="#" class="purchase">ПРИОБРЕСТИ</a>
+        </div>
+    </div>
+    <div class="midelmenu">
+        <div class="lefttextbox">
+            <div class="posettx">
+                <p class="text2">“Эта игра не для слабых”<br><strong class="text1">GRYOnline (PL)</strong></p>
+            </div>
+            <div>
+                <p class="text2">“Шокирующе реалистичный геймплей с огромной дозой адреналина”<br><strong class="text1">Vandal (ES)</strong></p>
+            </div>
+            <div>
+                <p class="text2">“Одна из самых сложных и карающих игр современности”<br><strong class="text1">3DJuegos (ES)</strong></p>
+            </div>
+            <div class="posettx">
+                <p class="text2">“Игра, обостряющая чувства и повышающая адреналин”<br><strong class="text1">DualSHOCKERS</strong></p>
+            </div>
+        </div>
+        <div class="centerimage">
+            <div class="beytarkov"></div>
+            <div class="beyArena"></div>
+        </div>
+        <div class="righttextbox"> 
+            <div class="posettx2">
+                <p class="text2">“Ультра-реализм в каждой из бесчисленных перестрелок”<br><strong class="text1">Gamestar (DE)</strong></p>
+            </div>
+            <div>
+                <p class="text2">“... непредсказуемая игра о снаряжении и том, как мы им дорожим”<br><strong class="text1">PC Gamer</strong></p>
+            </div>
+            <div>
+                <p class="text2">“... даже самый экипированный сорвиголова получит свой пулю в затылок”<br><strong class="text1"> PCGamesN</strong></p>
+            </div>
+            <div class="posettx2">
+                <p class="text2">“Никаких ограничений в PvP”<br><strong class="text1">WCCFTECH</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="bannerblack">
+    </div>
+    <div class="bannerblack">
+    </div>
+
+    <div class="packnoyt">
+    <div>
+    <div class="newtryx"><h2 class="text1">Новости </h2> </div>
+    </div>   
+    <div class="tabs">
+        <div class="tab current-tab"><strong class="text1">Все</strong></div>
+        <div class="text1"> | </div>
+        <div class="text1">Патчноуты</div>
+    </div>
+    
+    <div class="news-item">
+        <div class="news-content">
+            <img src="Image/thumb_71ba48d5f44baf439ff718ff69ca6dd5.jpg" alt="Новогодние скидки" width="210px" height="120px">
+            <div class="news-text">
+                <a href="#" class="news-title-item">Новогодние скидки в Escape from Tarkov и Escape from Tarkov: Arena!</a>
+                <div class="news-desc">Новогодние скидки в Escape from Tarkov и Escape from Tarkov: Arena!</div>
+            </div>
+        </div>
+        <div class="flexbutton">
+            <div class="news-date"> 2024.12.23</div>
+            <button class="news-button">Читать >></button>
+        </div>
+    </div>
+    
+    <div class="news-item">
+        <div class="news-content">
+            <img src="Image/thumb_86e97838663df1792ad62cbb2ef73ad5.jpg" alt="План исправлений" width="210px" height="120px">
+            <div class="news-text">
+                <a href="#" class="news-title-item">Примерный план исправлений и улучшений</a>
+                <div class="news-desc">Примерный план исправлений и улучшений, которые войдут в ближайшие обновления EFT и EFT: Arena</div>
+            </div>
+        </div>
+        <div class="flexbutton">
+            <div class="news-date">2024.12.05</div>
+            <button class="news-button">Читать >></button>
+        </div>
+    </div>
+    
+    <div class="news-item">
+        <div class="news-content">
+            <img src="Image/patch_note_ru.jpg" alt="Патч 0.15.51" width="210x" height="120px">
+            <div class="news-text">
+                <a href="#" class="news-title-item">Патч 0.15.51</a>
+                <div class="news-desc">Список изменений патча 0.15.5.1 для Escape from Tarkov</div>
+            </div>
+        </div>
+        <div class="flexbutton">
+            <div class="news-date">2024.11.02</div>
+            <button class="news-button">Читать >></button>
+        </div>
+    </div>
+    
+    <div class="pagination">
+        <div class="page-number current-page"><h4>1</h4></div>
+        <div class="page-number"><h4>2</h4></div>
+        <div class="page-number"><h4>3</h4></div>
+        <div class="page-number"><h4>4</h4></div>
+        <div class="page-number"><h4>5</h4></div>
+        <div class="page-number"><h4>6</h4></div>
+        <div class="text1"><h4> ... </h4></div>
+        <div class="page-number"><h4>след ></h4></div>
+        <div class="page-number"><h4>последняя >></h4></div>
+    </div>
+    <div>
+        <button class="news-button">ПОКАЗАТЬ ЕЩЕ</button>
+    </div>
+    <div>
+        <button class="small-button">ПОКАЗАТЬ ВСЕ</button>
+    </div>
+    </div>
+</body>
+</html>
